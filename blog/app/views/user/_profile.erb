@@ -1,12 +1,12 @@
     <li>
       <a href = "#"><%=blog.title%></a>
       <br>
-      <form action="/blogs/<%=blog.id%>" method="POST">
+      <form class = <%=blog.id%> action="/blogs/<%=blog.id%>" method="POST">
         <input name="_method" type="hidden" value="delete" />
         <input type="submit" value="DELETE" />
       </form>
       <br>
-      <form action="/blogs/<%=blog.id%>/edit" method="POST">
+      <form class = <%=blog.id%> action="/blogs/<%=blog.id%>/edit" method="POST">
         <input name="_method" type="hidden" value="put" />
         <input type="submit" value="Edit" />
       </form>

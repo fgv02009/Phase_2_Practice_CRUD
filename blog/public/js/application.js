@@ -19,7 +19,7 @@ $(document).ready(function() {
 
   $(document).on("click", "#saving_blog", function(event) {
     event.preventDefault();
-    console.log($(this))
+
     var request = $.ajax({
       url: "/blogs",
       type: "POST",
@@ -32,4 +32,20 @@ $(document).ready(function() {
 
     });
   });
+
+//WORKING ON AJAXING EDITING FUNCTIONALITY--Stuck on response functionality- how do I target the particular thing being edited to append response?
+  // $(document).on("click", ".editing", function(event) {
+  //   event.preventDefault();
+  //   var blog_id = $(this).closest("form").eq(0).attr("class")
+  //   var request = $.ajax({
+  //     url: "/blogs/"+blog_id+"/edit",
+  //     type: "GET"
+  //     // data: $(this).closest("form").serialize()
+  //   });
+
+  //   request.done(function(response) {
+  //     $(this).append(response);
+
+  //   });
+  // });
 });

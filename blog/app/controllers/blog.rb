@@ -14,8 +14,6 @@ post '/blogs' do
   #create new blog
 
   if request.xhr?
-    p params
-    puts "HELLO"
     @blog = Blog.new(title: params[:blog][:title], content:
      params[:blog][:content], user: current_user)
     if @blog.save
@@ -52,12 +50,21 @@ delete '/blogs/:id' do
 end
 
 get '/blogs/:id/edit' do
-  @blog = Blog.find(params[:id])
-  erb :'blog/edit'
+  if request.xhr?
+    @blog = Blog.find(params[:id])
+    erb :'blog/edit', locals: {blog: @blog}, layout: false
+  else
+    @blog = Blog.find(params[:id])
+    erb :'blog/edit'
+  end
 end
 
 put '/blogs/:id' do
   @blog = Blog.find(params[:id])
-  @blog.update(title: params[:blog][:title], content: params[:blog][:content])
-  redirect "users/#{current_user.id}/profile"
+  if request.xhr?
+    @blog.update(title: params[:blog][:title], content: params[:blog][:content])
+  else
+    @blog.update(title: params[:blog][:title], content: params[:blog][:content])
+    redirect "users/#{current_user.id}/profile"
+  end
 end

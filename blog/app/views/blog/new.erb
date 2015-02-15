@@ -1,0 +1,19 @@
+
+<div class = "container_blog_add">
+  <ul style = "list-style: none">
+    <form action="/blogs" method="POST">
+      <li>
+        <label for="description">Title:</label>
+        <input id="title" type="text" name="blog[title]" />
+      </li>
+      <br>
+      <li>
+        <label for="description">Content:</label>
+        <textarea rows = "10" cols = "50" id="content" name="blog[content]" /></textarea>
+      </li>
+      <li>
+        <input id = "saving_blog" type="submit" value="Save" />
+      </li>
+      </form>
+  </ul>
+</div>

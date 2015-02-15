@@ -12,6 +12,7 @@ require 'uri'
 require 'pathname'
 require 'bcrypt'
 require 'faker'
+require 'sinatra/flash'
 
 require 'pg'
 require 'active_record'

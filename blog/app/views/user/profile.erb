@@ -1,0 +1,20 @@
+<h1>Welcome, <%=@user.username%></h1>
+<p> Here are your blogs </p>
+<ul>
+  <%@blogs.each do |blog|%>
+    <li>
+      <a href = "#"><%=blog.title%></a>
+      <br>
+      <form action="/blogs/<%=blog.id%>" method="POST">
+        <input name="_method" type="hidden" value="delete" />
+        <input type="submit" value="DELETE" />
+      </form>
+      <br>
+      <form action="/blogs/<%=blog.id%>/edit" method="GET">
+        <input type="submit" value="Edit" />
+      </form>
+      <br>
+    </li>
+  <%end%>
+
+<a id = "adding_blog" href = "/blogs/new"> Add another blog </a>

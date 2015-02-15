@@ -1,0 +1,14 @@
+
+
+<div class = "container">
+  <form action = "/blogs/<%=@blog.id%>" method = "POST">
+    <input name="_method" type="hidden" value="PUT"/>
+    <label for="blog_title">Title</label>
+    <input id="blog_title" type="text" name="blog[title]" value="<%= @blog.title %>" size=60/>
+    <br>
+    <label for="blog_content">Content</label>
+    <textarea id="blog_content"  name ='blog[content]' cols="65" rows="5" ><%=@blog.content%></textarea>
+    <br>
+    <input type="submit" value="Save" />
+  </form>
+</div>

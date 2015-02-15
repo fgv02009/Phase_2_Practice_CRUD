@@ -1,9 +1,17 @@
-get '/login' do
+get '/' do
+  erb :"index"
+end
 
+get '/login' do
+  if current_user
+    redirect 'users/#{current_user.id}/profile'
+  else
+    erb :"login"
+  end
 end
 
 post '/login' do
-  user = User.authenticate(params[:email], params[:password])
+  user = User.authenticate(params[:username], params[:password])
   if user
     session[:user_id] = user.id
     redirect "users/#{session[:user_id]}/profile"
@@ -19,5 +27,7 @@ get '/logout' do
 end
 
 get '/users/:id/profile' do
+  @user = User.find(params[:id])
+  @blogs = @user.blogs
   erb :"user/profile"
 end
